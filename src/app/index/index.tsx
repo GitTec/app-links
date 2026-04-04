@@ -3,6 +3,7 @@ import { Image, TouchableOpacity, View } from "react-native";
 
 import { styles } from "@/app/index/styles";
 import { Categories } from "@/components/categories";
+import { Link } from "@/components/link";
 import { colors } from "@/styles/colors";
 
 export default function Index() {
@@ -17,6 +18,11 @@ export default function Index() {
       </View>
 
       <Categories />
+      <Link
+        name="Rocketseat"
+        url="https://www.rocketseat.com.br/"
+        onDetails={() => console.log("Clicou!")}
+      />
     </View>
   );
 }
