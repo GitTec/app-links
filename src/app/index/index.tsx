@@ -11,6 +11,7 @@ import {
 import { styles } from "@/app/index/styles";
 import { Categories } from "@/components/categories";
 import { Link } from "@/components/link";
+import { Option } from "@/components/option";
 import { colors } from "@/styles/colors";
 
 export default function Index() {
@@ -27,7 +28,7 @@ export default function Index() {
       <Categories />
 
       <FlatList
-        data={["1", "2", "3", "4", "5", "6", "7", "8", "9"]}
+        data={["1", "2", "3", "4", "5", "6", "7", "8", "9", "10", "11"]}
         keyExtractor={(item) => item}
         renderItem={() => (
           <Link
@@ -59,6 +60,11 @@ export default function Index() {
             <Text style={styles.modalLinkName}>Rocketseat</Text>
 
             <Text style={styles.modalUrl}>https://www.rocketseat.com.br/</Text>
+
+            <View style={styles.modalFooter}>
+              <Option name="Excluir" icon="delete" variant="secondary" />
+              <Option name="Abrir" icon="language" />
+            </View>
           </View>
         </View>
       </Modal>

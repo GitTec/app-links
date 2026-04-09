@@ -6,6 +6,10 @@ export const styles = StyleSheet.create({
     flex: 1,
     paddingTop: 62,
   },
+  title: {
+    color: colors.green[900],
+    fontSize: 22,
+  },
   header: {
     paddingHorizontal: 24,
     width: "100%",
@@ -19,6 +23,7 @@ export const styles = StyleSheet.create({
     width: 38,
   },
   links: {
+    // flex: 1,
     borderTopWidth: 1,
     borderTopColor: colors.gray[600],
   },
@@ -35,14 +40,14 @@ export const styles = StyleSheet.create({
     backgroundColor: colors.gray[900],
     borderTopWidth: 1,
     borderTopColor: colors.gray[800],
-    paddingBottom: 32,
+    paddingBottom: 42,
     padding: 24,
   },
   modalHeader: {
     width: "100%",
     flexDirection: "row",
     alignItems: "center",
-    marginBottom: 42,
+    marginBottom: 32,
   },
   modalCategory: {
     flex: 1,
@@ -58,5 +63,14 @@ export const styles = StyleSheet.create({
   modalUrl: {
     fontSize: 14,
     color: colors.gray[400],
+  },
+  modalFooter: {
+    flexDirection: "row",
+    marginTop: 32,
+    width: "100%",
+    justifyContent: "space-between",
+    borderTopWidth: 1,
+    borderTopColor: colors.gray[400],
+    paddingVertical: 14,
   },
 });
