@@ -1,4 +1,5 @@
 import { MaterialIcons } from "@expo/vector-icons";
+import { useState } from "react";
 import { Text, TouchableOpacity, View } from "react-native";
 
 import { router } from "expo-router";
@@ -11,6 +12,14 @@ import { Categories } from "@/components/categories";
 import { Input } from "@/components/input";
 
 export default function Add() {
+  const [category, setCategory] = useState("");
+  const [name, setName] = useState("");
+  const [url, setUrl] = useState("");
+
+  function handleAdd() {
+    console.log({ name, url });
+  }
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -22,12 +31,12 @@ export default function Add() {
       </View>
 
       <Text style={styles.label}>Selecione uma categoria</Text>
-      <Categories />
+      <Categories onChange={setCategory} selected={category} />
 
       <View style={styles.form}>
-        <Input placeholder="Nome" />
-        <Input placeholder="Url" />
-        <Button title="Adicionar" />
+        <Input placeholder="Nome" onChangeText={setName} autoCorrect={false} />
+        <Input placeholder="Url" onChangeText={setUrl} autoCorrect={false} />
+        <Button title="Adicionar" onPress={handleAdd} />
       </View>
     </View>
   );
