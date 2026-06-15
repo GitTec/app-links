@@ -1,13 +1,13 @@
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-const LINKS_STORAGE_KEY = "Links-storage";
+const LINKS_STORAGE_KEY = "links-storage";
 
 type LinkStorage = {
   id: string;
   name: string;
   url: string;
-  title: string;
-  description: string;
+  category: string;
+  //   description: string;
 };
 
 async function get(): Promise<LinkStorage[]> {
@@ -28,4 +28,4 @@ async function save(newLink: LinkStorage) {
   }
 }
 
-export const LinkStorage = { get, save };
+export const linkStorage = { get, save };

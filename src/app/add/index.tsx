@@ -4,6 +4,7 @@ import { Alert, Text, TouchableOpacity, View } from "react-native";
 
 import { router } from "expo-router";
 
+import { linkStorage } from "@/storage/link-storage";
 import { colors } from "@/styles/colors";
 import { styles } from "./styles";
 
@@ -16,19 +17,33 @@ export default function Add() {
   const [name, setName] = useState("");
   const [url, setUrl] = useState("");
 
-  function handleAdd() {
-    if (!category) {
-      return Alert.alert("Categoria", "Selecione a categoria.");
-    }
+  async function handleAdd() {
+    try {
+      if (!category) {
+        return Alert.alert("Categoria", "Selecione a categoria.");
+      }
 
-    if (!name.trim()) {
-      return Alert.alert("Nome", "O nome precisa ser informado.");
-    }
+      if (!name.trim()) {
+        return Alert.alert("Nome", "O nome precisa ser informado.");
+      }
 
-    if (!url.trim()) {
-      return Alert.alert("URL", "A URL precisa ser informada.");
+      if (!url.trim()) {
+        return Alert.alert("URL", "A URL precisa ser informada.");
+      }
+
+      await linkStorage.save({
+        id: new Date().getTime().toString(),
+        name,
+        url,
+        category,
+      });
+
+      const data = await linkStorage.get();
+      console.log(data);
+    } catch (error) {
+      Alert.alert("Erro", "Não foi possível salvar o link");
+      console.log(error);
     }
-    console.log({ category, name, url });
   }
 
   return (
@@ -46,7 +61,12 @@ export default function Add() {
 
       <View style={styles.form}>
         <Input placeholder="Nome" onChangeText={setName} autoCorrect={false} />
-        <Input placeholder="URL" onChangeText={setUrl} autoCorrect={false} />
+        <Input
+          placeholder="URL"
+          onChangeText={setUrl}
+          autoCorrect={false}
+          autoCapitalize="none"
+        />
         <Button title="Adicionar" onPress={handleAdd} />
       </View>
     </View>
